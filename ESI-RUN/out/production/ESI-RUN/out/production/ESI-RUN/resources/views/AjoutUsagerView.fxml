@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="transport.control.AjoutUsagerController"
+      spacing="10" alignment="CENTER"
+      style="-fx-padding: 20;">
+
+    <Label text="Ajouter un nouvel usager" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="nomField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Prénom:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="prenomField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Adresse:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="adresseField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Date de naissance:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <DatePicker fx:id="dateNaissancePicker" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Mobilité réduite:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <CheckBox fx:id="mobiliteReduiteCheck" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+        <Label text="Type de carte:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Label fx:id="typeCarteLabel" text="Déterminé automatiquement" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Ajouter" onAction="#ajouterUsager"/>
+        <Button text="Annuler" onAction="#annuler"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="transport.control.VenteTitreController"
+      spacing="10" alignment="CENTER"
+      style="-fx-padding: 20;">
+
+    <Label text="Vendre un titre de transport" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="Usager:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="usagerCombo" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Type de titre:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <RadioButton fx:id="ticketRadio" text="Ticket simple" selected="true">
+                <toggleGroup>
+                    <ToggleGroup fx:id="typeTitreGroup"/>
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="carteRadio" text="Carte de navigation" toggleGroup="$typeTitreGroup"/>
+        </HBox>
+
+        <Label text="Mode de paiement:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="modePaiementCombo" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Prix calculé:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label fx:id="prixLabel" text="0 DA" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label fx:id="typeCarteLabel" text="Type de carte:" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Label fx:id="typeCarteValueLabel" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Vendre" onAction="#vendreTitre"/>
+        <Button text="Annuler" onAction="#annuler"/>
+    </HBox>
+
+    <Label fx:id="messageLabel" textFill="RED" visible="false"/>
+</VBox>
