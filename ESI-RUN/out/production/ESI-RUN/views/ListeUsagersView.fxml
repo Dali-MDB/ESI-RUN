@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="transport.control.ListeUsagersController"
-      spacing="10"
-      style="-fx-padding: 20;">
+<VBox spacing="20" style="-fx-background-color: #333333; -fx-padding: 30;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.ListeUsagersController">
 
-    <Label text="Liste des usagers" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: ffffff;" text="List of users" />
 
-    <TableView fx:id="usagersTable" VBox.vgrow="ALWAYS">
+    <TableView fx:id="usagersTable" prefHeight="447.0" prefWidth="657.0" style="-fx-background-color: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn fx:id="nomColumn" text="Nom" />
-            <TableColumn fx:id="prenomColumn" text="Prénom" />
-            <TableColumn fx:id="ageColumn" text="Âge" />
-            <TableColumn fx:id="typeColumn" text="Type" />
+            <TableColumn fx:id="nomColumn" prefWidth="160.0000057220459" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Surname" />
+            <TableColumn fx:id="prenomColumn" minWidth="0.0" prefWidth="168.0" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Lastname" />
+            <TableColumn fx:id="ageColumn" minWidth="0.0" prefWidth="125.3333740234375" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Age" />
+            <TableColumn fx:id="typeColumn" prefWidth="201.99993896484375" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Type" />
         </columns>
     </TableView>
 
-    <HBox spacing="10" alignment="CENTER">
-        <Button text="Actualiser" onAction="#actualiserListe"/>
-        <Button text="Fermer" onAction="#fermer"/>
+    <HBox alignment="CENTER" spacing="20">
+        <Button onAction="#actualiserListe" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Refresh" />
+        <Button onAction="#fermer" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Close" />
     </HBox>
 </VBox>

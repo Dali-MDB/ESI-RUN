@@ -12,40 +12,41 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="10" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.AjoutReclamationController">
+<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #333333; -fx-padding: 30;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.AjoutReclamationController">
 
-    <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Add a complaint" />
+    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Add a complaint" textFill="WHITE" />
 
-    <GridPane hgap="10" vgap="10">
+    <GridPane hgap="15" style="-fx-background-color: #444444; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);" vgap="15">
         <padding>
-            <Insets bottom="20" left="20" right="20" top="20" />
+            <Insets bottom="25" left="25" right="25" top="25" />
         </padding>
 
-        <Label text="Type of complaint:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <ComboBox fx:id="typeReclamationCombo" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label style="-fx-font-size: 14; -fx-text-fill: fffffff;" text="Type of complaint:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <ComboBox fx:id="typeReclamationCombo" style="-fx-background-color: #555555; -fx-font-size: 14; -fx-min-width: 200;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-        <Label text="Declarant:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <ComboBox fx:id="declarantCombo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label style="-fx-font-size: 14; -fx-text-fill: ffffff;" text="Declarant:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <ComboBox fx:id="declarantCombo" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-        <Label text="Concerned station:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <TextField fx:id="stationConcerneeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label style="-fx-font-size: 14; -fx-text-fill: ffffff;" text="Concerned station:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="stationConcerneeField" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-        <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-        <TextArea fx:id="descriptionArea" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <columnConstraints>
-         <ColumnConstraints />
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
+        <Label style="-fx-font-size: 14; -fx-text-fill: ffffff;" text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextArea fx:id="descriptionArea" style="-fx-font-size: 14; -fx-min-width: 200; -fx-min-height: 100; -fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        
+        <columnConstraints>
+            <ColumnConstraints minWidth="150" />
+            <ColumnConstraints minWidth="200" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="120" />
+        </rowConstraints>
     </GridPane>
 
-    <HBox alignment="CENTER" spacing="10">
-        <Button onAction="#ajouterReclamation" text="Add" />
-        <Button onAction="#annuler" text="Cancel" />
+    <HBox alignment="CENTER" spacing="20">
+        <Button onAction="#ajouterReclamation" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Add" />
+        <Button onAction="#annuler" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Cancel" />
     </HBox>
 </VBox>

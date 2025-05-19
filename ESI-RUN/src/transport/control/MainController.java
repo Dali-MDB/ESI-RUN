@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import transport.core.GestionnaireTransport;
@@ -18,6 +19,9 @@ public class MainController {
 
     @FXML
     private Label statusLabel;
+
+    @FXML
+    private VBox centerContent;
 
     private GestionnaireTransport gestionnaire;
 
@@ -36,15 +40,16 @@ public class MainController {
             afficherErreur("Erreur de sauvegarde", "Impossible de sauvegarder les données: " + e.getMessage());
         }
     }
+
     @FXML
     private void afficherListeEmployes(ActionEvent event) {
-        ouvrirFenetre("/views/ListeEmployesView.fxml", "Liste des employés");
+        chargerVue("/views/ListeEmployesView.fxml");
     }
+
     @FXML
     private void restaurerDonnees(ActionEvent event) {
         try {
             GestionnaireTransport nouveauGestionnaire = GestionnaireTransport.chargerDonnees();
-            // Mettre à jour la référence globale
             MainApp.setGestionnaireTransport(nouveauGestionnaire);
             this.gestionnaire = nouveauGestionnaire;
             statusLabel.setText("Données restaurées avec succès.");
@@ -55,7 +60,6 @@ public class MainController {
 
     @FXML
     private void quitterApplication(ActionEvent event) {
-        // Demander confirmation avant de quitter
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Quitter l'application");
@@ -69,51 +73,49 @@ public class MainController {
                     afficherErreur("Erreur de sauvegarde", "Impossible de sauvegarder les données: " + e.getMessage());
                 }
             }
-            // Fermer l'application
             Stage stage = (Stage) statusLabel.getScene().getWindow();
             stage.close();
         });
     }
 
-    // Méthodes pour afficher les différentes vues
     @FXML
     private void afficherAjoutUsager(ActionEvent event) {
-        ouvrirFenetre("/views/AjoutUsagerView.fxml", "Ajouter un usager");
+        chargerVue("/views/AjoutUsagerView.fxml");
     }
 
     @FXML
     private void afficherAjoutEmploye(ActionEvent event) {
-        ouvrirFenetre("/views/AjoutEmployeView.fxml", "Ajouter un employé");
+        chargerVue("/views/AjoutEmployeView.fxml");
     }
 
     @FXML
     private void afficherVenteTitre(ActionEvent event) {
-        ouvrirFenetre("/views/VenteTitreView.fxml", "Vendre un titre de transport");
+        chargerVue("/views/VenteTitreView.fxml");
     }
 
     @FXML
     private void afficherValidationTitre(ActionEvent event) {
-        ouvrirFenetre("/views/ValidationTitreView.fxml", "Valider un titre de transport");
+        chargerVue("/views/ValidationTitreView.fxml");
     }
 
     @FXML
     private void afficherListeUsagers(ActionEvent event) {
-        ouvrirFenetre("/views/ListeUsagersView.fxml", "Liste des usagers");
+        chargerVue("/views/ListeUsagersView.fxml");
     }
 
     @FXML
     private void afficherListeTitres(ActionEvent event) {
-        ouvrirFenetre("/views/ListeTitresView.fxml", "Liste des titres");
+        chargerVue("/views/ListeTitresView.fxml");
     }
 
     @FXML
     private void afficherAjoutReclamation(ActionEvent event) {
-        ouvrirFenetre("/views/AjoutReclamationView.fxml", "Ajouter une réclamation");
+        chargerVue("/views/AjoutReclamationView.fxml");
     }
 
     @FXML
     private void afficherListeReclamations(ActionEvent event) {
-        ouvrirFenetre("/views/ListeReclamationsView.fxml", "Liste des réclamations");
+        chargerVue("/views/ListeReclamationsView.fxml");
     }
 
     @FXML
@@ -121,26 +123,41 @@ public class MainController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("À propos");
         alert.setHeaderText("ESI-RUN - Système de gestion de transport");
-        alert.setContentText("Version 1.0\nDéveloppé dans le cadre du TP POO 2024/2025\nEcole Supérieure d'Informatique (ESI-Alger)");
+        alert.setContentText(
+                "Version 1.0\nDéveloppé dans le cadre du TP POO 2024/2025\nEcole Supérieure d'Informatique (ESI-Alger)");
         alert.showAndWait();
     }
 
-    // Méthode utilitaire pour ouvrir une nouvelle fenêtre
-    private void ouvrirFenetre(String fxmlPath, String titre) {
+    private void chargerVue(String fxmlPath) {
         try {
+            // Load the new view
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle(titre);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
+
+            // Get the controller of the loaded view
+            Object controller = loader.getController();
+
+            // If the controller has a setGestionnaire method, set the gestionnaire
+            try {
+                controller.getClass().getMethod("setGestionnaire", GestionnaireTransport.class)
+                        .invoke(controller, gestionnaire);
+            } catch (Exception e) {
+                // Ignore if the controller doesn't have setGestionnaire method
+            }
+
+            // Clear the center content and add the new view
+            centerContent.getChildren().clear();
+            centerContent.getChildren().add(root);
+
+            // Update status
+            String viewName = fxmlPath.substring(fxmlPath.lastIndexOf("/") + 1, fxmlPath.lastIndexOf("."));
+            statusLabel.setText("Vue actuelle: " + viewName);
+
         } catch (IOException e) {
-            afficherErreur("Erreur d'interface", "Impossible d'ouvrir la fenêtre: " + e.getMessage());
+            afficherErreur("Erreur d'interface", "Impossible de charger la vue: " + e.getMessage());
         }
     }
 
-    // Méthode utilitaire pour afficher une erreur
     private void afficherErreur(String titre, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titre);

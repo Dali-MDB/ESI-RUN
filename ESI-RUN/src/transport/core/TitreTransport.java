@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public abstract class TitreTransport implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    protected String id;  // ID en tant que String
+    protected String id; // ID en tant que String
     protected LocalDate dateAchat;
     protected double prix;
     protected Usager usager;
@@ -15,7 +15,7 @@ public abstract class TitreTransport implements Serializable {
     private static int compteur = 0;
 
     public TitreTransport() {
-        this.id = String.valueOf(++compteur);  // Conversion en String
+        this.id = String.valueOf(++compteur); // Conversion en String
         this.dateAchat = LocalDate.now();
         this.prix = calculerPrix();
     }
@@ -24,7 +24,7 @@ public abstract class TitreTransport implements Serializable {
     public void initialiser(Usager usager, ModePaiement modePaiement) {
         this.usager = usager;
         this.modePaiement = modePaiement;
-        this.prix = calculerPrix();  // Recalcul du prix après l'initialisation
+        this.prix = calculerPrix(); // Recalcul du prix après l'initialisation
     }
 
     // Méthode abstraite pour calculer le prix du titre
@@ -39,7 +39,8 @@ public abstract class TitreTransport implements Serializable {
         }
     }
 
-    // Méthode abstraite pour vérifier si le titre n'est pas expiré à une date donnée
+    // Méthode abstraite pour vérifier si le titre n'est pas expiré à une date
+    // donnée
     public abstract boolean estValide(LocalDate dateUtilisation) throws TitreNonValideException;
 
     // Méthode pour valider un titre (simulation de passage au lecteur magnétique)

@@ -10,60 +10,102 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Background?>
+<?import javafx.scene.layout.BackgroundFill?>
+<?import javafx.scene.paint.Color?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.MainController">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="transport.control.MainController"
+            prefHeight="600.0" prefWidth="800.0">
+    
     <top>
-        <MenuBar>
-            <Menu text="Fichier">
-                <MenuItem onAction="#sauvegarderDonnees" text="Sauvegarder" />
-                <MenuItem onAction="#restaurerDonnees" text="Restaurer" />
-                <SeparatorMenuItem />
-                <MenuItem onAction="#quitterApplication" text="Quitter" />
-            </Menu>
-            <Menu text="Gestion">
-                <MenuItem onAction="#afficherAjoutUsager" text="Ajouter un usager" />
-                <MenuItem onAction="#afficherAjoutEmploye" text="Ajouter un employé" />
-                <MenuItem onAction="#afficherVenteTitre" text="Vendre un titre de transport" />
-                <MenuItem onAction="#afficherValidationTitre" text="Valider un titre de transport" />
-            </Menu>
-            <Menu text="Affichage">
-                <MenuItem onAction="#afficherListeUsagers" text="Liste des usagers" />
-                <MenuItem onAction="#afficherListeEmployes" text="Liste des Employes" />
-                <MenuItem onAction="#afficherListeTitres" text="Liste des titres" />
-            </Menu>
-            <Menu text="Réclamations">
-                <MenuItem onAction="#afficherAjoutReclamation" text="Ajouter une réclamation" />
-                <MenuItem onAction="#afficherListeReclamations" text="Liste des réclamations" />
-            </Menu>
-            <Menu text="Aide">
-                <MenuItem onAction="#afficherAPropos" text="À propos" />
-            </Menu>
-        </MenuBar>
+        <VBox>
+            <MenuBar style="-fx-background-color: #888888;">
+                <Menu text="File" style="-fx-text-fill: white;">
+                    <MenuItem text="Save" onAction="#sauvegarderDonnees" style="-fx-text-fill: black;" />
+                    <MenuItem text="Restore" onAction="#restaurerDonnees" style="-fx-text-fill: black;" />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Exit" onAction="#quitterApplication" style="-fx-text-fill: black;" />
+                </Menu>
+                <Menu text="Users" style="-fx-text-fill: white;">
+                    <MenuItem text="Add User" onAction="#afficherAjoutUsager" style="-fx-text-fill: black;" />
+                    <MenuItem text="Users List" onAction="#afficherListeUsagers" style="-fx-text-fill: black;" />
+                </Menu>
+                <Menu text="Employees" style="-fx-text-fill: white;">
+                    <MenuItem text="Add Employee" onAction="#afficherAjoutEmploye" style="-fx-text-fill: black;" />
+                    <MenuItem text="Employees List" onAction="#afficherListeEmployes" style="-fx-text-fill: black;" />
+                </Menu>
+                <Menu text="Fare Media" style="-fx-text-fill: white;">
+                    <MenuItem text="Sell Fare Medium" onAction="#afficherVenteTitre" style="-fx-text-fill: black;" />
+                    <MenuItem text="Validate Fare Medium" onAction="#afficherValidationTitre" style="-fx-text-fill: black;" />
+                    <MenuItem text="Fare Media List" onAction="#afficherListeTitres" style="-fx-text-fill: black;" />
+                </Menu>
+                <Menu text="Complaints" style="-fx-text-fill: white;">
+                    <MenuItem text="Add Complaint" onAction="#afficherAjoutReclamation" style="-fx-text-fill: black;" />
+                    <MenuItem text="Complaints List" onAction="#afficherListeReclamations" style="-fx-text-fill: black;" />
+                </Menu>
+                <Menu text="Help" style="-fx-text-fill: white;">
+                    <MenuItem text="About" onAction="#afficherAPropos" style="-fx-text-fill: black;" />
+                </Menu>
+            </MenuBar>
+            <HBox style="-fx-background-color: #333333; -fx-padding: 10;" alignment="CENTER_LEFT" spacing="20">
+                <Label text="ESI-RUN" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <HBox HBox.hgrow="ALWAYS"/>
+                <Label fx:id="statusLabel" style="-fx-text-fill: white; -fx-font-size: 12;" text="Ready" />
+            </HBox>
+        </VBox>
     </top>
 
-    <center>
-        <VBox alignment="CENTER" spacing="20">
+    <left>
+        <VBox style="-fx-background-color: #444444; -fx-min-width: 200;" spacing="10">
             <padding>
-                <Insets bottom="20" left="20" right="20" top="20" />
+                <Insets top="20" right="10" bottom="20" left="10"/>
+            </padding>
+            
+            <Label text="Main Actions" style="-fx-text-fill: #888888; -fx-font-size: 12; -fx-padding: 0 0 10 0;"/>
+            
+            <Button onAction="#afficherAjoutUsager" 
+                    text="Add User" 
+                    style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;"/>
+            
+            <Button onAction="#afficherAjoutEmploye" 
+                    text="Add Employee" 
+                    style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;"/>
+            
+            <Button onAction="#afficherVenteTitre" 
+                    text="Sell Fare Medium" 
+                    style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;"/>
+            
+            <Button onAction="#afficherValidationTitre" 
+                    text="Validate Fare Medium" 
+                    style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;"/>
+            
+            <Button onAction="#afficherAjoutReclamation" 
+                    text="Add Complaint" 
+                    style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;"/>
+            
+            <Button onAction="#afficherListeTitres" 
+                    text="List Fare Media" 
+                    style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox fx:id="centerContent" alignment="CENTER" spacing="25" style="-fx-background-color: #333333;">
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="30" />
             </padding>
 
-            <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Welcome to the ESI-RUN application" />
-            <Label style="-fx-font-size: 18;" text="Transport management system" />
-             <Button onAction="#afficherAjoutUsager" prefWidth="200" text="Add a user" />
-             <Button onAction="#afficherAjoutReclamation" prefWidth="200" text="Add a complaint" />
-             <Button onAction="#afficherVenteTitre" prefWidth="200" text="Sell a faremedium" />
-             <Button onAction="#afficherValidationTitre" prefWidth="200" text="Validate a faremedium" />
-             <Button onAction="#afficherListeTitres" prefWidth="200" text="List FareMediums" />
-
-            <HBox alignment="CENTER" spacing="20" />
-
-            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="760.0" spacing="20" />
+            <Label style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white;" text="Welcome to ESI-RUN" />
+            <Label style="-fx-font-size: 20; -fx-text-fill: #cccccc;" text="Transport Management System" />
+            <Label style="-fx-font-size: 16; -fx-text-fill: #999999;" text="Select an option from the menu or sidebar to begin" />
         </VBox>
     </center>
 
     <bottom>
-        <HBox alignment="CENTER_RIGHT" style="-fx-background-color: #f0f0f0; -fx-padding: 5px;">
-            <Label fx:id="statusLabel" text="Prêt" />
+        <HBox alignment="CENTER_RIGHT" style="-fx-background-color: #333333; -fx-padding: 8px;">
+            <Label fx:id="statusLabel" style="-fx-text-fill: white; -fx-font-size: 12;" text="Ready" />
         </HBox>
     </bottom>
 </BorderPane>
