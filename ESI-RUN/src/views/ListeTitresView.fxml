@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="transport.control.ListeTitresController"
-      spacing="10"
-      style="-fx-padding: 20;">
+<VBox spacing="20" style="-fx-background-color: #333333; -fx-padding: 30;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.ListeTitresController">
 
-    <Label text="Liste des titres de transport" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="List of fare media" />
 
-    <TableView fx:id="titresTable" VBox.vgrow="ALWAYS">
+    <TableView fx:id="titresTable" style="-fx-background-color: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn fx:id="idColumn" text="ID" />
-            <TableColumn fx:id="typeColumn" text="Type" />
-            <TableColumn fx:id="usagerColumn" text="Usager" />
-            <TableColumn fx:id="dateAchatColumn" text="Date d'achat" />
-            <TableColumn fx:id="typeCarteColumn" text="Type de carte" />
-            <TableColumn fx:id="prixColumn" text="Prix" />
-            <TableColumn fx:id="validiteColumn" text="Non expiré" />
-            <TableColumn fx:id="validationColumn" text="État validation" />
+            <TableColumn fx:id="idColumn" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="ID" />
+            <TableColumn fx:id="typeColumn" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Type" />
+            <TableColumn fx:id="usagerColumn" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="User" />
+            <TableColumn fx:id="dateAchatColumn" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Purchase date" />
+            <TableColumn fx:id="typeCarteColumn" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Card type" />
+            <TableColumn fx:id="prixColumn" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Price" />
+            <TableColumn fx:id="validiteColumn" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Not expired" />
+            <TableColumn fx:id="validationColumn" style="-fx-font-size: 14; -fx-text-fill: #34495e;" text="Validation status" />
         </columns>
     </TableView>
 
-    <HBox spacing="10" alignment="CENTER">
-        <Button text="Actualiser" onAction="#actualiserListe"/>
-        <Button text="Fermer" onAction="#fermer"/>
+    <HBox alignment="CENTER" spacing="20">
+        <Button onAction="#actualiserListe" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Refresh" />
+        <Button onAction="#fermer" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Close" />
     </HBox>
 </VBox>
