@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.MainController">
+    
+    <top>
+        <VBox>
+            <MenuBar style="-fx-background-color: #888888;">
+                <Menu style="-fx-text-fill: white;" text="File">
+                    <MenuItem onAction="#sauvegarderDonnees" style="-fx-text-fill: black;" text="Save" />
+                    <MenuItem onAction="#restaurerDonnees" style="-fx-text-fill: black;" text="Restore" />
+                    <SeparatorMenuItem />
+                    <MenuItem onAction="#quitterApplication" style="-fx-text-fill: black;" text="Exit" />
+                </Menu>
+                <Menu style="-fx-text-fill: white;" text="Users">
+                    <MenuItem onAction="#afficherAjoutUsager" style="-fx-text-fill: black;" text="Add User" />
+                    <MenuItem onAction="#afficherListeUsagers" style="-fx-text-fill: black;" text="Users List" />
+                </Menu>
+                <Menu style="-fx-text-fill: white;" text="Employees">
+                    <MenuItem onAction="#afficherAjoutEmploye" style="-fx-text-fill: black;" text="Add Employee" />
+                    <MenuItem onAction="#afficherListeEmployes" style="-fx-text-fill: black;" text="Employees List" />
+                </Menu>
+                <Menu style="-fx-text-fill: white;" text="Fare Media">
+                    <MenuItem onAction="#afficherVenteTitre" style="-fx-text-fill: black;" text="Sell Fare Medium" />
+                    <MenuItem onAction="#afficherValidationTitre" style="-fx-text-fill: black;" text="Validate Fare Medium" />
+                    <MenuItem onAction="#afficherListeTitres" style="-fx-text-fill: black;" text="Fare Media List" />
+                </Menu>
+                <Menu style="-fx-text-fill: white;" text="Complaints">
+                    <MenuItem onAction="#afficherAjoutReclamation" style="-fx-text-fill: black;" text="Add Complaint" />
+                    <MenuItem onAction="#afficherListeReclamations" style="-fx-text-fill: black;" text="Complaints List" />
+                </Menu>
+                <Menu style="-fx-text-fill: white;" text="Help">
+                    <MenuItem onAction="#afficherAPropos" style="-fx-text-fill: black;" text="About" />
+                </Menu>
+            </MenuBar>
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #333333; -fx-padding: 10;">
+                <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;" text="ESI-RUN" />
+                <HBox HBox.hgrow="ALWAYS" />
+                <Label fx:id="statusLabel" style="-fx-text-fill: white; -fx-font-size: 12;" text="Ready" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #444444; -fx-min-width: 200;">
+            <padding>
+                <Insets bottom="20" left="10" right="10" top="20" />
+            </padding>
+            
+            <Label style="-fx-text-fill: #888888; -fx-font-size: 12; -fx-padding: 0 0 10 0;" text="Main Actions" />
+            
+            <Button onAction="#afficherAjoutUsager" style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;" text="Add User" />
+            
+            <Button onAction="#afficherAjoutEmploye" style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;" text="Add Employee" />
+            
+            <Button onAction="#afficherVenteTitre" style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;" text="Sell Fare Medium" />
+            
+            <Button onAction="#afficherValidationTitre" style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;" text="Validate Fare Medium" />
+            
+            <Button onAction="#afficherAjoutReclamation" style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;" text="Add Complaint" />
+            
+            <Button onAction="#afficherListeTitres" style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-alignment: CENTER_LEFT; -fx-padding: 10; -fx-min-width: 180;" text="List Fare Media" />
+        </VBox>
+    </left>
+
+    <center>
+        <VBox fx:id="centerContent" alignment="CENTER" spacing="25" style="-fx-background-color: #333333;">
+            <padding>
+                <Insets bottom="30" left="30" right="30" top="30" />
+            </padding>
+         <ImageView fitHeight="150.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/Group%20183.png" />
+            </image>
+         </ImageView>
+
+            <Label style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white;" text="Welcome to ESI-RUN" />
+            <Label style="-fx-font-size: 20; -fx-text-fill: #cccccc;" text="Transport Management System" />
+            <Label style="-fx-font-size: 16; -fx-text-fill: #999999;" text="Select an option from the menu or sidebar to begin" />
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" style="-fx-background-color: #333333; -fx-padding: 8px;">
+            <Label fx:id="statusLabel" style="-fx-text-fill: white; -fx-font-size: 12;" text="Ready" />
+        </HBox>
+    </bottom>
+</BorderPane>

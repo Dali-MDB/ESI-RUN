@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Background?>
+<?import javafx.scene.layout.BackgroundFill?>
+<?import javafx.scene.paint.Color?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="transport.control.AjoutUsagerController"
+      alignment="CENTER" spacing="20" style="-fx-background-color: #333333; -fx-padding: 30;">
+
+    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;" text="Add a new user" />
+
+    <GridPane hgap="15" vgap="15" style="-fx-background-color: #444444; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
+        <padding>
+            <Insets bottom="25" left="25" right="25" top="25" />
+        </padding>
+
+        <Label text="Surname:" style="-fx-font-size: 14; -fx-text-fill: white;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="nomField" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #555555; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Firstname:" style="-fx-font-size: 14; -fx-text-fill: white;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="prenomField" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #555555; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Address:" style="-fx-font-size: 14; -fx-text-fill: white;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="adresseField" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #555555; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Date of birth:" style="-fx-font-size: 14; -fx-text-fill: white;" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <DatePicker fx:id="dateNaissancePicker" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #555555; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Reduced mobility:" style="-fx-font-size: 14; -fx-text-fill: white;" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <CheckBox fx:id="mobiliteReduiteCheck" style="-fx-font-size: 14; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label text="Card type:" style="-fx-font-size: 14; -fx-text-fill: white;" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <Label fx:id="typeCarteLabel" text="Déterminé automatiquement" style="-fx-font-size: 14; -fx-text-fill: #cccccc;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        
+        <columnConstraints>
+            <ColumnConstraints minWidth="150" />
+            <ColumnConstraints minWidth="200" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+        </rowConstraints>
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="20">
+        <Button onAction="#ajouterUsager" text="Add" style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" />
+        <Button onAction="#annuler" text="Cancel" style="-fx-background-color: #555555; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" />
+    </HBox>
+</VBox>

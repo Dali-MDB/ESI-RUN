@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #333333; -fx-padding: 30;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.VenteTitreController">
+
+    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: FFFFFF;" text="Sell a fare medium" />
+
+    <GridPane hgap="15" style="-fx-background-color: #444444; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);" vgap="15">
+        <padding>
+            <Insets bottom="25" left="25" right="25" top="25" />
+        </padding>
+
+        <Label style="-fx-font-size: 14; -fx-text-fill: FFFFFF;" text="User:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <ComboBox fx:id="usagerCombo" style="-fx-font-size: 14; -fx-min-width: 200;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label style="-fx-font-size: 14; -fx-text-fill: FFFFFF;" text="Type of fare medium" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <HBox spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <RadioButton fx:id="ticketRadio" selected="true" style="-fx-font-size: 14; -fx-text-fill: FFFFFF;" text="Single ticket">
+                <toggleGroup>
+                    <ToggleGroup fx:id="typeTitreGroup" />
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="carteRadio" style="-fx-font-size: 14; -fx-text-fill: FFFFFF;" text="Navigation card" toggleGroup="$typeTitreGroup" />
+        </HBox>
+
+        <Label style="-fx-font-size: 14; -fx-text-fill: FFFFFF;" text="Payment method:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <ComboBox fx:id="modePaiementCombo" style="-fx-font-size: 14; -fx-min-width: 200;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label style="-fx-font-size: 14; -fx-text-fill: FFFFFF;" text="Calculated price:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label fx:id="prixLabel" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: FFFFFF;" text="0 DA" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label fx:id="typeCarteLabel" style="-fx-font-size: 14; -fx-text-fill: #ffffff;" text="Card Type:" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Label fx:id="typeCarteValueLabel" style="-fx-font-size: 14; -fx-text-fill: #ffffff;" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        
+        <columnConstraints>
+            <ColumnConstraints minWidth="150" />
+            <ColumnConstraints minWidth="200" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+            <RowConstraints minHeight="35" />
+        </rowConstraints>
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="20">
+        <Button onAction="#vendreTitre" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Sell" />
+        <Button onAction="#annuler" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;" text="Cancel" />
+    </HBox>
+
+    <Label fx:id="messageLabel" style="-fx-font-size: 14; -fx-text-fill: #e74c3c;" visible="false" />
+</VBox>
